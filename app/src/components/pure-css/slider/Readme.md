@@ -9,12 +9,18 @@ This React component creates an interactive image slider with a parallax effect.
 
 ### How it Works
 
-We have a slider-container div, an image-track div and the images. The images are placed horizontally on the image-track. And whenever the user clicks and drags the mouse over the container, the image will have to move and also their object position will change for the parallax effect to happen.
+We have a slider-container div, an image-track div and the images. The images are placed horizontally on the image-track.
+And whenever the user clicks and drags the mouse over the container, the image will have to move and also their object position will change for the parallax effect to happen.
+
 so we have a "percentage" state which tracks the mouse movement. For that we have to start from when user CLICKS the mouse, and track how much they DRAGGED the mouse. Also track when the mouse is UP.
 we have states to track them too "mouseDownAt".
+
 Also to continue scrolling from where they left, we also have a prevPercentage state.
+
 But how does the movement and parallax effect happen?
+
 Its simple!! we change the corresponding style according to the percentage state
+
 For the image-track:
 
 ```
