@@ -27,7 +27,7 @@ export default function Slider({ images }) {
   useEffect(() => {
     trackRef.current.animate(
       {
-        transform: `translate(${percentage}%, -50%)`,
+        transform: `translate(${percentage}%)`,
       },
       { duration: 1200, fill: "forwards" }
     );
@@ -49,6 +49,18 @@ export default function Slider({ images }) {
         setMouseDownAt(e.clientX);
       }}
       onMouseUp={() => {
+        setMouseDownAt(null);
+        setPrevPercentage(percentage);
+        if (percentage < -100) {
+          setPercentage(-100);
+          return;
+        }
+        if (percentage > 0) {
+          setPercentage(0);
+          return;
+        }
+      }}
+      onMouseLeave={() => {
         setMouseDownAt(null);
         setPrevPercentage(percentage);
         if (percentage < -100) {

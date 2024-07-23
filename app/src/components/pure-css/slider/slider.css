@@ -2,18 +2,14 @@ body {
   overflow-x: hidden;
 }
 #slider-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 500px;
   width: 100%;
   background-color: black;
   margin: 0;
   overflow: hidden;
 }
 #image-track > img {
-  width: 40vmin;
-  height: 56vmin;
+  width: 300px;
+  height: 400px;
   object-fit: cover;
   object-position: 100% 50%;
   user-select: none;
