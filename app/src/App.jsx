@@ -1,5 +1,11 @@
+import SliderPage from "./pages/SliderPage";
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <SliderPage />
+    </>
+  );
 }
 
 export default App;

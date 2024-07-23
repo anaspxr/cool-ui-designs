@@ -1,0 +1,31 @@
+body {
+  overflow-x: hidden;
+}
+#slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 100%;
+  background-color: black;
+  margin: 0;
+  overflow: hidden;
+}
+#image-track > img {
+  width: 40vmin;
+  height: 56vmin;
+  object-fit: cover;
+  object-position: 100% 50%;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+#image-track {
+  display: flex;
+  gap: 4vmin;
+  position: relative;
+  left: 50%;
+}
