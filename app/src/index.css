@@ -12,3 +12,12 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #333;
 }
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+button {
+  background: #1e1d1d;
+}
