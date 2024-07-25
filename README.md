@@ -1,3 +1,5 @@
+*the project is at development right now, features are to be added in near future..!!*
+
 # Hello..
 
 ### This project contains some cool UI designs I found on YouTube, GitHub, and similar sources. 
