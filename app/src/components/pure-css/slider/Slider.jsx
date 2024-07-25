@@ -12,11 +12,11 @@ export default function Slider({ images }) {
   const handleMouseMove = (e) => {
     if (!mouseDownAt) return;
     const mouseMovement = parseFloat(mouseDownAt) - e.clientX;
-    const maxMovement = window.innerWidth;
+    const windowWidth = window.innerWidth;
     setPercentage(
       Math.min(
         Math.max(
-          prevPercentage + parseFloat((mouseMovement / maxMovement) * -100),
+          prevPercentage + parseFloat((mouseMovement / windowWidth) * -100),
           -105
         ),
         5
@@ -26,11 +26,12 @@ export default function Slider({ images }) {
   const handleTouchMove = (e) => {
     if (!mouseDownAt) return;
     const touchMovement = parseFloat(mouseDownAt) - e.touches[0].clientX;
-    const maxMovement = window.innerWidth;
+    const windowWidth = window.innerWidth;
     setPercentage(
       Math.min(
         Math.max(
-          prevPercentage + parseFloat((touchMovement / maxMovement) * -100),
+          prevPercentage +
+            parseFloat((touchMovement / (windowWidth * 2)) * -100),
           -105
         ),
         5
@@ -52,9 +53,17 @@ export default function Slider({ images }) {
   };
 
   useEffect(() => {
+    const totaLength =
+      window.innerWidth > 600
+        ? images.length * (300 + 25) - window.innerWidth
+        : images.length * (200 + 15) - window.innerWidth;
+    //300 and 200 are image width in large screen and smaller screens respectively
+    //25 and 15 are thw gap between images
     trackRef.current.animate(
       {
-        transform: `translate(${percentage}%)`,
+        transform: `translate(${
+          (percentage * totaLength) / window.innerWidth
+        }%)`,
       },
       { duration: 1200, fill: "forwards" }
     );
@@ -67,7 +76,7 @@ export default function Slider({ images }) {
         { duration: 1200, fill: "forwards" }
       );
     });
-  }, [percentage]);
+  }, [images.length, percentage]);
 
   return (
     <div

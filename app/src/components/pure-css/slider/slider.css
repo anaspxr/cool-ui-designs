@@ -1,11 +1,21 @@
 body {
   overflow-x: hidden;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 #slider-container {
   width: 100%;
   background-color: black;
   margin: 0;
   overflow: hidden;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 #image-track > img {
   width: 300px;
@@ -21,5 +31,20 @@ body {
 
 #image-track {
   display: flex;
-  gap: 4vmin;
+  gap: 25px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+@media screen and (max-width: 600px) {
+  #image-track > img {
+    width: 200px;
+    height: 300px;
+  }
+  #image-track {
+    gap: 15px;
+  }
 }
