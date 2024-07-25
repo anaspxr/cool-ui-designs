@@ -22,6 +22,4 @@ body {
 #image-track {
   display: flex;
   gap: 4vmin;
-  position: relative;
-  left: 50%;
 }
