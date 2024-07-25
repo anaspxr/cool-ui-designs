@@ -23,6 +23,33 @@ export default function Slider({ images }) {
       )
     );
   };
+  const handleTouchMove = (e) => {
+    if (!mouseDownAt) return;
+    const touchMovement = parseFloat(mouseDownAt) - e.touches[0].clientX;
+    const maxMovement = window.innerWidth;
+    setPercentage(
+      Math.min(
+        Math.max(
+          prevPercentage + parseFloat((touchMovement / maxMovement) * -100),
+          -105
+        ),
+        5
+      )
+    );
+  };
+
+  const handleMouseUp = () => {
+    setMouseDownAt(null);
+    setPrevPercentage(percentage);
+    if (percentage < -100) {
+      setPercentage(-100);
+      return;
+    }
+    if (percentage > 0) {
+      setPercentage(0);
+      return;
+    }
+  };
 
   useEffect(() => {
     trackRef.current.animate(
@@ -48,31 +75,15 @@ export default function Slider({ images }) {
       onMouseDown={(e) => {
         setMouseDownAt(e.clientX);
       }}
-      onMouseUp={() => {
-        setMouseDownAt(null);
-        setPrevPercentage(percentage);
-        if (percentage < -100) {
-          setPercentage(-100);
-          return;
-        }
-        if (percentage > 0) {
-          setPercentage(0);
-          return;
-        }
+      onTouchStart={(e) => {
+        setMouseDownAt(e.touches[0].clientX);
       }}
-      onMouseLeave={() => {
-        setMouseDownAt(null);
-        setPrevPercentage(percentage);
-        if (percentage < -100) {
-          setPercentage(-100);
-          return;
-        }
-        if (percentage > 0) {
-          setPercentage(0);
-          return;
-        }
-      }}
+      onMouseUp={handleMouseUp}
+      onTouchEnd={handleMouseUp}
+      onMouseLeave={handleMouseUp}
+      onTouchCancel={handleMouseUp}
       onMouseMove={handleMouseMove}
+      onTouchMove={handleTouchMove}
     >
       <div id="image-track" ref={trackRef}>
         {images.map((image, index) => (
