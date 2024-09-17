@@ -7,14 +7,8 @@ export default function Navigation() {
       <Link to="/parallaxslider" className="nav-button">
         Image Slider With Parallax Effect
       </Link>
-      <Link to="/parallaxslider" className="nav-button">
-        Image Slider With Parallax Effect
-      </Link>
-      <Link to="/parallaxslider" className="nav-button">
-        Image Slider With Parallax Effect
-      </Link>
-      <Link to="/parallaxslider" className="nav-button">
-        Image Slider With Parallax Effect
+      <Link to="/buttons" className="nav-button">
+        Buttons
       </Link>
     </div>
   );
